@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.ms.teach.by.pojo.Employees" table="employees" catalog="ms">
+        <id name="eid" type="java.lang.Integer">
+            <column name="eid" />
+            <generator class="identity"></generator>
+        </id>
+        <many-to-one name="systems" class="com.ms.teach.by.pojo.Systems" fetch="join" lazy="false">
+            <column name="employeeSystem" />
+        </many-to-one>
+        <property name="employeeNumber" type="java.lang.String">
+            <column name="employeeNumber" length="30" not-null="true" />
+        </property>
+        <property name="employeeName" type="java.lang.String">
+            <column name="employeeName" length="30" not-null="true" />
+        </property>
+        <property name="employeeSex" type="java.lang.String">
+            <column name="employeeSex" length="2" />
+        </property>
+        <property name="employeeBirthday" type="java.util.Date">
+            <column name="employeeBirthday" length="10" />
+        </property>
+        <property name="employeeBirthplace" type="java.lang.String">
+            <column name="employeeBirthplace" length="50" />
+        </property>
+        <property name="employeeSpecialty" type="java.lang.String">
+            <column name="employeeSpecialty" length="50" />
+        </property>
+        <property name="employeeSkill" type="java.lang.String">
+            <column name="employeeSkill" length="50" />
+        </property>
+        <property name="employeeEducationBackground" type="java.lang.String">
+            <column name="employeeEducationBackground" length="20" />
+        </property>
+        <property name="employeeDegree" type="java.lang.String">
+            <column name="employeeDegree" length="20" />
+        </property>
+        <property name="employeeProfessionalTitle" type="java.lang.String">
+            <column name="employeeProfessionalTitle" length="50" />
+        </property>
+        <property name="employeeOffice" type="java.lang.Integer">
+            <column name="employeeOffice" />
+        </property>
+        <property name="employeeWorkDate" type="java.util.Date">
+            <column name="employeeWorkDate" length="10" />
+        </property>
+        <property name="employeeRole" type="java.lang.String">
+            <column name="employeeRole" length="30" />
+        </property>
+        <property name="employeeJob" type="java.lang.String">
+            <column name="employeeJob" length="50" />
+        </property>
+        <property name="employeePhone" type="java.lang.String">
+            <column name="employeePhone" length="30" />
+        </property>
+        <property name="employeeQq" type="java.lang.String">
+            <column name="employeeQQ" length="30" />
+        </property>
+        <property name="employeeEmail" type="java.lang.String">
+            <column name="employeeEmail" length="30" />
+        </property>
+        <property name="employeeResume" type="java.lang.String">
+            <column name="employeeResume" length="65535" />
+        </property>
+        <property name="employeeExplain" type="java.lang.String">
+            <column name="employeeExplain" length="65535" />
+        </property>
+        <set name="nativeCourseses" inverse="false" lazy="false">
+            <key>
+                <column name="courseTeacher" />
+            </key>
+            <one-to-many class="com.ms.teach.by.pojo.NativeCourses" />
+        </set>
+    </class>
+</hibernate-mapping>

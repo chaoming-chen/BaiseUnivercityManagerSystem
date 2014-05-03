@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.ms.teach.by.pojo.StandardSpecialtys" table="standard_specialtys" catalog="ms">
+        <id name="sid" type="java.lang.Integer">
+            <column name="sid" />
+            <generator class="identity" />
+        </id>
+        <property name="specialtyNumber" type="java.lang.String">
+            <column name="specialtyNumber" length="50" not-null="true" />
+        </property>
+        <property name="specialtyName" type="java.lang.String">
+            <column name="specialtyName" length="50" not-null="true" />
+        </property>
+        <property name="specialtyClassNumber" type="java.lang.String">
+            <column name="specialtyClassNumber" length="50" />
+        </property>
+        <property name="specialtyClassName" type="java.lang.String">
+            <column name="specialtyClassName" length="50" />
+        </property>
+        <property name="specialtySubjectNumber" type="java.lang.String">
+            <column name="specialtySubjectNumber" length="30" />
+        </property>
+        <property name="specialtySubjectName" type="java.lang.String">
+            <column name="specialtySubjectName" length="50" />
+        </property>
+        <property name="specialtyLevel" type="java.lang.String">
+            <column name="specialtyLevel" length="10" />
+        </property>
+        <property name="specialtyBeginning" type="java.lang.String">
+            <column name="specialtyBeginning" length="10" />
+        </property>
+        <property name="specialtyExplain" type="java.lang.String">
+            <column name="specialtyExplain" length="65535" />
+        </property>
+    </class>
+</hibernate-mapping>

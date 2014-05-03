@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.ms.teach.by.pojo.Modules" table="modules" catalog="ms">
+        <id name="mid" type="java.lang.Integer">
+            <column name="mid" />
+            <generator class="identity" />
+        </id>
+        <property name="moduleName" type="java.lang.String">
+            <column name="moduleName" length="50" not-null="true" />
+        </property>
+        <property name="moduleEnName" type="java.lang.String">
+            <column name="moduleEnName" length="50" not-null="true" />
+        </property>
+        <property name="moduleRole" type="java.lang.Integer">
+            <column name="moduleRole" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

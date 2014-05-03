@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.ms.teach.by.pojo.StandardCourses" table="standard_courses" catalog="ms">
+        <id name="cid" type="java.lang.Integer">
+            <column name="cid" />
+            <generator class="identity" />
+        </id>
+        <property name="courseNumber" type="java.lang.String">
+            <column name="courseNumber" length="30" />
+        </property>
+        <property name="courseName" type="java.lang.String">
+            <column name="courseName" length="50" />
+        </property>
+        <property name="courseAddToNativeSign" type="java.lang.String">
+            <column name="courseAddToNativeSign" length="2" />
+        </property>
+        <property name="courseTheoryCredit" type="java.lang.Float">
+            <column name="courseTheoryCredit" precision="6" scale="1" />
+        </property>
+        <property name="coursePracticeCredit" type="java.lang.Float">
+            <column name="coursePracticeCredit" precision="6" scale="1" />
+        </property>
+        <property name="courseTheoryPeriod" type="java.lang.Integer">
+            <column name="courseTheoryPeriod" length="6"/>
+        </property>
+        <property name="coursePracticePeriod" type="java.lang.Integer">
+            <column name="coursePracticePeriod" length="6"  />
+        </property>
+        <property name="courseWeekPeriod" type="java.lang.Integer">
+            <column name="courseWeekPeriod" length="6" />
+        </property>
+        <property name="courseTerm" type="java.lang.String">
+            <column name="courseTerm" length="6" />
+        </property>
+        <property name="courseExam" type="java.lang.String">
+            <column name="courseExam" length="6" />
+        </property>
+        <property name="courseOpenDepartment" type="java.lang.String">
+            <column name="courseOpenDepartment" length="50" />
+        </property>
+        <property name="courseSpecialty" type="java.lang.String">
+            <column name="courseSpecialty" length="50" />
+        </property>
+        <property name="courseSpecialtyNumber" type="java.lang.String">
+            <column name="courseSpecialtyNumber" length="50" />
+        </property>
+        <property name="courseExplain" type="java.lang.String">
+            <column name="courseExplain" length="65535" />
+        </property>
+        <property name="courseProperty" type="java.lang.String">
+            <column name="courseProperty" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

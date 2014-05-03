@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.ms.teach.by.pojo.Students" table="students" catalog="ms">
+        <id name="sid" type="java.lang.Integer">
+            <column name="sid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="nativeSpecialtys" class="com.ms.teach.by.pojo.NativeSpecialtys" fetch="join" lazy="false">
+            <column name="studentSpecialty" not-null="true" />
+        </many-to-one>
+        <many-to-one name="classes" class="com.ms.teach.by.pojo.Classes" fetch="select">
+            <column name="studentClass" not-null="true" />
+        </many-to-one>
+        <many-to-one name="systems" class="com.ms.teach.by.pojo.Systems" fetch="select">
+            <column name="studentSystem" not-null="true" />
+        </many-to-one>
+        <property name="studentNumber" type="java.lang.String">
+            <column name="studentNumber" length="50" not-null="true" />
+        </property>
+        <property name="studentName" type="java.lang.String">
+            <column name="studentName" length="50" not-null="true" />
+        </property>
+        <property name="studentSex" type="java.lang.String">
+            <column name="studentSex" length="2" />
+        </property>
+        <property name="studentPhone" type="java.lang.String">
+            <column name="studentPhone" length="50" />
+        </property>
+        <property name="studentEmail" type="java.lang.String">
+            <column name="studentEmail" length="50" />
+        </property>
+        <property name="studentQq" type="java.lang.String">
+            <column name="studentQQ" length="30" />
+        </property>
+        <property name="studentExplain" type="java.lang.String">
+            <column name="studentExplain" />
+        </property>
+    </class>
+</hibernate-mapping>

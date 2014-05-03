@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.ms.teach.by.pojo.Users" table="users" catalog="ms">
+        <id name="uid" type="java.lang.Integer">
+            <column name="uid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="systems" class="com.ms.teach.by.pojo.Systems" fetch="join" lazy="false">
+            <column name="userSystem" />
+        </many-to-one>
+        <many-to-one name="nativeSpecialtys" class="com.ms.teach.by.pojo.NativeSpecialtys" fetch="join" lazy="false">
+            <column name="userSpecialty" />
+        </many-to-one>
+        <many-to-one name="departments" class="com.ms.teach.by.pojo.Departments" fetch="join" lazy="false">
+            <column name="userDepartment" />
+        </many-to-one>
+        <many-to-one name="roles" class="com.ms.teach.by.pojo.Roles" fetch="join" lazy="false">
+            <column name="userRole" not-null="true" />
+        </many-to-one>
+        <property name="userNumber" type="java.lang.String">
+            <column name="userNumber" length="50" not-null="true" />
+        </property>
+        <property name="userPassword" type="java.lang.String">
+            <column name="userPassword" length="50" not-null="true" />
+        </property>
+        <property name="userOffice" type="java.lang.Integer">
+            <column name="userOffice" />
+        </property>
+        <property name="userClass" type="java.lang.Integer">
+            <column name="userClass" />
+        </property>
+        <property name="userEmployeeNumber" type="java.lang.Integer">
+            <column name="userEmployeeNumber" />
+        </property>
+        <property name="userStudentNumber" type="java.lang.Integer">
+            <column name="userStudentNumber" />
+        </property>
+    </class>
+</hibernate-mapping>

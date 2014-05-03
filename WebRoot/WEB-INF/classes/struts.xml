@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+	<!-- 动态方法调用，为true可使用通配符 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	
+	<!-- 常量设置开发模式，更改配置文件时会自动更新，不用重新布署 -->
+	<constant name="struts.devMode" value="true" />
+	
+	<!-- 中文问题 -->
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	
+	<!-- 允许静态方法的访问 -->
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
+
+	<package name="com.byTeachms" namespace="/" extends="struts-default">
+	   
+	   	<!-- 位置很重要，先配置 default-action-ref ，再global-results ,再action -->
+        <!-- <interceptors>
+        	  <interceptorn  name="sessionFilter" class="com.ms.teach.by.utils.SessionFilterInterceptor"></interceptor>
+        </interceptors> -->
+        
+        
+		 <action name="*_*" class="com.ms.teach.by.action.{1}Action" method="{2}">
+		 	<param name="enableGZIP">false</param>
+			<result name="success">/files/{2}.jsp</result>
+			<result name="error">/files/error.jsp</result>
+			<result name="toIndex">/index.jsp</result>
+			<result name="toLogin">/login.jsp</result>
+			<result name="toListDepartments">/files/listDepartments.jsp</result>
+			<result name="toListNativeSpecialtys">/files/listNativeSpecialtys.jsp</result>			
+			<result name="toListClasses">/files/listClasss.jsp</result>			
+			<result name="toListSystems">/files/listSystems.jsp</result>			
+			<result name="toListClassStudents">/files/listClassStudents.jsp</result>			
+			<result name="toListEmployees">/files/listEmployees.jsp</result>			
+		</action>
+	</package>
+	
+	<!-- 不用严格的JSON格式，就不用单独配置一个包 -->
+	<!--<package name="specialtyJson" namespace="/" extends="json-default" >   
+        <action name="addSpecialtys" class="com.ms.teach.by.action.NativeSpecialtysAction" method="addSpecialtys" >   
+            <result type="json">
+                <param name="root">result</param>   
+           </result>
+       </action>   
+	</package>  
+	
+-->
+
+</struts>

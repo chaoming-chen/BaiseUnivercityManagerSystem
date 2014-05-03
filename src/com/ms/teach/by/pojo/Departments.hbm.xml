@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.ms.teach.by.pojo.Departments" table="departments" catalog="ms">
+        <id name="did" type="java.lang.Integer">
+            <column name="did" />
+            <generator class="identity" />
+        </id>
+        <property name="departmentNumber" type="java.lang.String">
+            <column name="departmentNumber" length="50" not-null="true" />
+        </property>
+        <property name="departmentName" type="java.lang.String">
+            <column name="departmentName" length="50" not-null="true" />
+        </property>
+        <property name="departmentCategory" type="java.lang.String">
+            <column name="departmentCategory" length="20" />
+        </property>
+        <property name="departmentPhone" type="java.lang.String">
+            <column name="departmentPhone" length="30" />
+        </property>
+        <property name="departmentEmail" type="java.lang.String">
+            <column name="departmentEmail" length="50" />
+        </property>
+        <property name="departmentExplain" type="java.lang.String">
+            <column name="departmentExplain" length="65535" />
+        </property>
+        <property name="userRole" type="java.lang.Integer">
+            <column name="userRole" />
+        </property>
+        <set name="userses" inverse="false" lazy="false">
+            <key>
+                <column name="userDepartment" />
+            </key>
+            <one-to-many class="com.ms.teach.by.pojo.Users" />
+        </set>
+    </class>
+</hibernate-mapping>

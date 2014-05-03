@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.ms.teach.by.pojo.Roles" table="roles" catalog="ms">
+        <id name="rid" type="java.lang.Integer">
+            <column name="rid" />
+            <generator class="identity" />
+        </id>
+        <property name="roleNumber" type="java.lang.Integer">
+            <column name="roleNumber" not-null="true" />
+        </property>
+        <property name="roleName" type="java.lang.String">
+            <column name="roleName" length="20" not-null="true" />
+        </property>
+        <set name="userses" inverse="false" lazy="false">
+            <key>
+                <column name="userRole" not-null="true" />
+            </key>
+            <one-to-many class="com.ms.teach.by.pojo.Users" />
+        </set>
+    </class>
+</hibernate-mapping>

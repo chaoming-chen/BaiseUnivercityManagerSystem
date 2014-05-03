@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.ms.teach.by.pojo.Systems" table="systems" catalog="ms" dynamic-update="true">
+        <id name="sid" type="java.lang.Integer">
+            <column name="sid" />
+            <generator class="identity" />
+        </id>
+        <property name="systemNumber" type="java.lang.String">
+            <column name="systemNumber" length="30" not-null="true" />
+        </property>
+        <property name="systemName" type="java.lang.String">
+            <column name="systemName" length="50" not-null="true" />
+        </property>
+        <property name="systemSimple" type="java.lang.String">
+            <column name="systemSimple" length="30" />
+        </property>
+        <property name="systemEmail" type="java.lang.String">
+            <column name="systemEmail" length="50" />
+        </property>
+        <property name="systemPhone" type="java.lang.String">
+            <column name="systemPhone" length="50" />
+        </property>
+        <property name="systemExplain" type="java.lang.String">
+            <column name="systemExplain" length="65535" />
+        </property>
+        <set name="nativeSpecialtyses" inverse="false"  lazy="false">
+            <key>
+                <column name="specialtySystem" />
+            </key>
+            <one-to-many class="com.ms.teach.by.pojo.NativeSpecialtys" />
+        </set>
+        <set name="nativeCourseses" inverse="false"  lazy="false">
+            <key>
+                <column name="courseSystem" />
+            </key>
+            <one-to-many class="com.ms.teach.by.pojo.NativeCourses" />
+        </set>
+        <set name="studentses" inverse="false"  lazy="false">
+            <key>
+                <column name="studentSystem" not-null="true" />
+            </key>
+            <one-to-many class="com.ms.teach.by.pojo.Students" />
+        </set>
+        <set name="userses" inverse="false"  lazy="false">
+            <key>
+                <column name="userSystem" />
+            </key>
+            <one-to-many class="com.ms.teach.by.pojo.Users" />
+        </set>
+        <set name="employeeses" inverse="false" lazy="false" optimistic-lock="true">
+            <key>
+                <column name="employeeSystem" />
+            </key>
+            <one-to-many class="com.ms.teach.by.pojo.Employees" />
+        </set>
+        <set name="classeses" inverse="false" lazy="false">
+            <key>
+                <column name="classSystem" not-null="true" />
+            </key>
+            <one-to-many class="com.ms.teach.by.pojo.Classes" />
+        </set>
+    </class>
+</hibernate-mapping>

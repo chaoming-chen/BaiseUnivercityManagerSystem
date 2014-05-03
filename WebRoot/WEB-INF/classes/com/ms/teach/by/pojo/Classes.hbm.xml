@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.ms.teach.by.pojo.Classes" table="classes" catalog="ms" lazy="false">
+        <id name="classId" type="java.lang.String"  unsaved-value="null">
+            <column name="classId" />
+            <generator class="uuid.hex" />
+        </id>
+        <many-to-one name="nativeSpecialtys" class="com.ms.teach.by.pojo.NativeSpecialtys" fetch="join" lazy="false">
+            <column name="classSpecialty" />
+        </many-to-one>
+        <many-to-one name="systems" class="com.ms.teach.by.pojo.Systems" fetch="join" lazy="false">
+            <column name="classSystem"/>
+        </many-to-one>
+        <property name="classNumber" type="java.lang.String">
+            <column name="classNumber" length="30" not-null="true" />
+        </property>
+        <property name="className" type="java.lang.String">
+            <column name="className" length="50" not-null="true" />
+        </property>
+        <property name="classGradeNumber" type="java.lang.String">
+            <column name="classGradeNumber" length="50" not-null="true" />
+        </property>
+        <property name="classGrade" type="java.lang.String">
+            <column name="classGrade" length="50" not-null="true" />
+        </property>
+        <property name="classTeacher" type="java.lang.String">
+            <column name="classTeacher" length="50" />
+        </property>
+        <property name="classPhone" type="java.lang.String">
+            <column name="classPhone" length="30" />
+        </property>
+        <property name="classEmail" type="java.lang.String">
+            <column name="classEmail" length="50" />
+        </property>
+        <property name="classQq" type="java.lang.String">
+            <column name="classQQ" length="30" />
+        </property>
+        <property name="classExplain" type="java.lang.String">
+            <column name="classExplain" length="65535" />
+        </property>
+        <set name="studentses" inverse="false" lazy="false">
+            <key>
+                <column name="studentClass"/>
+            </key>
+            <one-to-many class="com.ms.teach.by.pojo.Students" />
+        </set>
+        <set name="nativeCourses" table="class_course_link" cascade="all" outer-join="false" lazy="false">
+            <key column="classId"/>
+            <many-to-many  column="cid" class="com.ms.teach.by.pojo.NativeCourses"/>
+        </set>
+    </class>
+</hibernate-mapping>

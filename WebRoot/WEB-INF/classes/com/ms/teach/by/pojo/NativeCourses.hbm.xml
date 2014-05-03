@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.ms.teach.by.pojo.NativeCourses" table="native_courses" catalog="ms" lazy="false">
+        <id name="cid" type="java.lang.String" unsaved-value="null">
+            <column name="cid" />
+            <generator class="uuid.hex" />
+        </id>
+        <many-to-one name="employees" class="com.ms.teach.by.pojo.Employees" fetch="join" lazy="false">
+            <column name="courseTeacher" />
+        </many-to-one>
+        <many-to-one name="systems" class="com.ms.teach.by.pojo.Systems" fetch="join" lazy="false">
+            <column name="courseSystem" />
+        </many-to-one>
+        <property name="courseProperty" type="java.lang.String">
+            <column name="courseProperty" length="50" not-null="true" />
+        </property>
+        <property name="courseNumber" type="java.lang.String">
+            <column name="courseNumber" length="30" />
+        </property>
+        <property name="courseName" type="java.lang.String">
+            <column name="courseName" length="50" />
+        </property>
+        <property name="courseTheoryCredit" type="java.lang.Float">
+            <column name="courseTheoryCredit" precision="12" scale="0" />
+        </property>
+        <property name="coursePracticeCredit" type="java.lang.Float">
+            <column name="coursePracticeCredit" precision="12" scale="0" />
+        </property>
+        <property name="courseTheoryPeriod" type="java.lang.Integer">
+            <column name="courseTheoryPeriod" length="6"/>
+        </property>
+        <property name="coursePracticePeriod" type="java.lang.Integer">
+            <column name="coursePracticePeriod" length="6"/>
+        </property>
+        <property name="courseTermNumber" type="java.lang.String">
+            <column name="courseTermNumber" length="50" />
+        </property>
+        <property name="courseTerm" type="java.lang.String">
+            <column name="courseTerm" length="50" />
+        </property>
+        <property name="courseWeekPeriod" type="java.lang.Integer">
+            <column name="courseWeekPeriod" length="6" />
+        </property>
+        <property name="courseExam" type="java.lang.String">
+            <column name="courseExam" length="6" />
+        </property>
+        <property name="courseOpenDepartment" type="java.lang.String">
+            <column name="courseOpenDepartment" length="30" />
+        </property>
+        <property name="courseExplain" type="java.lang.String">
+            <column name="courseExplain" length="65535" />
+        </property>
+        <property name="courseSpecialtyNumber" type="java.lang.String">
+            <column name="courseSpecialtyNumber" length="50" />
+        </property>
+        <property name="courseSpecialty" type="java.lang.String">
+            <column name="courseSpecialty" length="50" />
+        </property>
+        <property name="courseGradeNumber" type="java.lang.String">
+            <column name="courseGradeNumber" length="50" />
+        </property>
+        <property name="courseGrade" type="java.lang.String">
+            <column name="courseGrade" length="50" />
+        </property>
+        
+         <set name="classes" table="class_course_link" lazy="false" cascade="all">
+            <key column="cid"/>
+            <many-to-many  column="classId" class="com.ms.teach.by.pojo.Classes"/>
+        </set>
+        
+    </class>
+</hibernate-mapping>

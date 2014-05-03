@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url" value="jdbc:mysql://192.168.47.63:3306/ms?useUnicode=true&amp;characterEncoding=UTF-8"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				 <prop key="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</prop> 
+				 <prop key="hibernate.hbm2ddl.auto">update</prop>
+				<!--  <prop key="hibernate.format_sql">true</prop>
+				 <prop key="hibernate.show_sql">true</prop> -->
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/ms/teach/by/pojo/Users.hbm.xml</value>
+				<value>com/ms/teach/by/pojo/Roles.hbm.xml</value>
+				<value>com/ms/teach/by/pojo/Modules.hbm.xml</value>
+				<value>com/ms/teach/by/pojo/Departments.hbm.xml</value>
+				<value>com/ms/teach/by/pojo/StandardSpecialtys.hbm.xml</value>
+				<value>com/ms/teach/by/pojo/NativeSpecialtys.hbm.xml</value>
+				<value>com/ms/teach/by/pojo/Classes.hbm.xml</value>
+				<value>com/ms/teach/by/pojo/Systems.hbm.xml</value>
+				<value>com/ms/teach/by/pojo/Students.hbm.xml</value>
+				<value>com/ms/teach/by/pojo/Employees.hbm.xml</value>
+				<value>com/ms/teach/by/pojo/StandardCourses.hbm.xml</value>
+				<value>com/ms/teach/by/pojo/NativeCourses.hbm.xml</value>
+				<value>com/ms/teach/by/pojo/YearTerm.hbm.xml</value>
+				<value>com/ms/teach/by/pojo/Grades.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="usersDAO" class="com.ms.teach.by.dao.impl.UsersDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+
+	<bean id="departmentsDAO"
+		class="com.ms.teach.by.dao.impl.DepartmentsDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="modulesDAO" class="com.ms.teach.by.dao.impl.ModulesDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="usersAction" class="com.ms.teach.by.action.UsersAction">
+		<property name="usersDAO">
+			<ref bean="usersDAO" />
+		</property>
+		<property name="systemsDAO">
+			<ref bean="systemsDAO" />
+		</property>
+		<property name="nativeSpecialtysDAO">
+			<ref bean="nativeSpecialtysDAO" />
+		</property>
+		<property name="classesDAO">
+			<ref bean="classesDAO" />
+		</property>
+		<property name="studentsDAO">
+			<ref bean="studentsDAO" />
+		</property>
+	</bean>
+	
+	<bean id="departmentsAction"
+		class="com.ms.teach.by.action.DepartmentsAction">
+		<property name="departmentsDAO">
+			<ref bean="departmentsDAO" />
+		</property>
+	</bean>
+	
+	<bean id="standardSpecialtysDAO"
+		class="com.ms.teach.by.dao.impl.StandardSpecialtysDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="systemsDAO" class="com.ms.teach.by.dao.impl.SystemsDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="nativeSpecialtysDAO"
+		class="com.ms.teach.by.dao.impl.NativeSpecialtysDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="studentsDAO" class="com.ms.teach.by.dao.impl.StudentsDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="employeesDAO" class="com.ms.teach.by.dao.impl.EmployeesDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="standardCoursesDAO"
+		class="com.ms.teach.by.dao.impl.StandardCoursesDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="nativeCoursesDAO"
+		class="com.ms.teach.by.dao.impl.NativeCoursesDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="yearTermDAO" class="com.ms.teach.by.dao.impl.YearTermDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="gradesDAO" class="com.ms.teach.by.dao.impl.GradesDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="classesDAO" class="com.ms.teach.by.dao.impl.ClassesDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="standardSpecialtysAction"
+		class="com.ms.teach.by.action.StandardSpecialtysAction">
+		<property name="standardSpecialtysDAO">
+			<ref bean="standardSpecialtysDAO" />
+		</property>
+	</bean>
+	<bean id="classesAction" class="com.ms.teach.by.action.ClasssAction">
+		<property name="classesDAO">
+			<ref bean="classesDAO" />
+		</property>
+	</bean>
+	
+	<bean id="studentsAction" class="com.ms.teach.by.action.ClassStudentsAction">
+		<property name="studentsDAO">
+			<ref bean="studentsDAO" />
+		</property>
+	</bean>
+	<bean id="employeesAction" class="com.ms.teach.by.action.EmployeesAction">
+		<property name="employeesDAO">
+			<ref bean="employeesDAO" />
+		</property>
+	</bean>
+	<bean id="standardCoursesAction" class="com.ms.teach.by.action.StandardCoursesAction">
+		<property name="standardCoursesDAO">
+			<ref bean="standardCoursesDAO" />
+		</property>
+	</bean>
+	<bean id="nativeCoursesAction" class="com.ms.teach.by.action.NativeCoursesAction">
+	    <property name="nativeCoursesDAO">
+			<ref bean="nativeCoursesDAO" />
+		</property>
+		<property name="standardCoursesDAO">
+			<ref bean="standardCoursesDAO" />
+		</property>
+		<property name="nativeSpecialtysDAO">
+			<ref bean="nativeSpecialtysDAO" />
+		</property>
+		<property name="classesDAO">
+			<ref bean="classesDAO" />
+		</property>
+		<property name="employeesDAO">
+			<ref bean="employeesDAO" />
+		</property>
+		<property name="yearTermDAO">
+			<ref bean="yearTermDAO" />
+		</property>
+		<property name="gradesDAO">
+			<ref bean="gradesDAO" />
+		</property>
+	</bean>
+	<bean id="yearAndTermAction" class="com.ms.teach.by.action.YearAndTermAction">
+		<property name="yearTermDAO">
+			<ref bean="yearTermDAO"/>
+		</property>
+	</bean>
+	<bean id="gradeAction" class="com.ms.teach.by.action.GradeAction">
+		<property name="gradesDAO">
+			<ref bean="gradesDAO"/>
+		</property>
+	</bean>
+	
+	
+	
+	</beans>

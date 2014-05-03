@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.ms.teach.by.pojo.YearTerm" table="year_term" catalog="ms">
+        <id name="yearTermId" type="java.lang.Integer">
+            <column name="year_term_id" />
+            <generator class="identity" />
+        </id>
+        <property name="ytNumber" type="java.lang.String">
+            <column name="yt_number" length="50" not-null="true" />
+        </property>
+        <property name="ytName" type="java.lang.String">
+            <column name="yt_name" length="50" />
+        </property>
+        <property name="ytStart" type="java.lang.String">
+            <column name="yt_start" length="50" />
+        </property>
+        <property name="ytEnd" type="java.lang.String">
+            <column name="yt_end" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>
